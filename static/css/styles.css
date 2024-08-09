@@ -1,0 +1,92 @@
+.flash-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; /* Bootstrap'in z-index değerinin üstünde olması için */
+    pointer-events: none; /* Tıklanabilirliği devre dışı bırakmak */
+}
+
+.option-row {
+    margin-bottom: 1rem;
+}
+
+/* Butonları yanyana ve stil vermek */
+.btn-secondary {
+    background-color: #6c757d; /* Gri arka plan */
+    color: #fff; /* Beyaz metin */
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Mavi arka plan */
+    color: #fff; /* Beyaz metin */
+    border: none;
+}
+
+/* Buton boyutlarını artırmak */
+.btn-lg {
+    padding: 0.5rem 1rem; /* Daha geniş ve yüksek */
+    font-size: 1.25rem; /* Daha büyük yazı */
+}
+
+/* Doğru cevap yazısını daha belirgin yapmak */
+.text-success {
+    font-weight: bold; /* Kalın yazı */
+    font-size: 1.1rem; /* Biraz daha büyük yazı */
+}
+
+.option-row {
+    margin-bottom: 1rem; /* Seçenekler arasındaki boşluk */
+}
+
+
+.flash-message .alert {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.flash-message .btn-close {
+    display: none; /* Kapatma butonunu gizle */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
+}
+.question-box {
+    margin-bottom: 1rem;
+}
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 40px 0;
+    text-align: center;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    margin-bottom: 20px;
+}
+.social-icons a {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #ffffff;
+}
+.social-icons a:hover {
+    color: #adb5bd;
+}

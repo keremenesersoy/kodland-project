@@ -1,0 +1,48 @@
+{% extends "/index.html" %}
+
+{% block content %}
+
+<div class="container">
+    <form action="/submit" method="post">
+        <div class="d-flex justify-content-center mb-3">
+            <div class="w-25">
+                <label for="username" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Your Name" required value="{{ session['username'] }}">
+            </div>
+        </div>
+        
+        <h1 class="mb-4">Soru-Cevap Bölümü</h1>
+        {% for question in questions %}
+        <div class="mt-5">
+            
+            <!-- Soru 1 -->
+            <div class="question-box border rounded p-3">
+                <h5 class="mb-3">Soru {{ loop.index }}:</h5>
+                <p>{{ question.question_text }}</p>
+
+                {% for option in question.options %}  
+                
+                <div class="mt-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="q{{ question.id }}a{{ option.id }}" value="{{ option.option_text }}" required>
+                        <label class="form-check-label" for="q{{ question.id }}a{{ option.id }}">
+                            {{ option.option_text }}
+                        </label>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Submit Butonu Ortada -->
+        <div class="d-flex justify-content-center mt-5 mb-5">
+            {% if questions | length > 0 %}
+            <button type="submit" class="btn btn-primary btn-lg btn-custom">Submit</button>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

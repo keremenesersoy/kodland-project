@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+
+{% block content %}
+  
+    <div class="container">
+        <h1 class="mt-5">Admin Paneli - Soru Yönetimi</h1>
+        <hr>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Soru Ekle</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/add_question">
+                    <div class="mb-3">
+                        <label for="question_text" class="form-label">Soru Metni</label>
+                        <input type="text" class="form-control" id="question_text" name="question_text" required>
+                    </div>
+                    <div id="options-container">
+                        <div class="mb-3 option-row">
+                            <label for="option_1" class="form-label">Seçenek 1</label>
+                            <input type="text" class="form-control" id="option_1" name="option_1" required>
+                            <input type="radio" name="answer" value="1" required> <span class="text-success">Doğru Cevap</span>
+                        </div>
+                        <div class="mb-3 option-row">
+                            <label for="option_1" class="form-label">Seçenek 2</label>
+                            <input type="text" class="form-control" id="option_2" name="option_2" required>
+                            <input type="radio" name="answer" value="2" required> <span class="text-success">Doğru Cevap</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary mb-3 me-2" id="add-option">Yeni Seçenek Ekle</button>
+                    <button type="button" class="btn btn-danger mb-3 me-2" id="remove-option" disabled>Son Seçeneği Sil</button>
+                    <button type="submit" class="btn btn-primary mb-3">Soru Ekle</button>
+                </form>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2>Mevcut Sorular</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Soru Metni</th>
+                            <th>Seçenekler</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for question in questions %}
+                        <tr>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.question_text }}</td>
+                            <td>
+                                {% for option in question.options %}
+                                
+                                <div class="d-flex align-items-center mb-2">
+                                    <span>{{ option.option_text }}</span>
+                                    {% if option.is_correct %}
+                                        <span class="text-success ms-2">&#10003;</span> <!-- Yeşil tik -->
+                                    {% endif %}
+                                </div>
+                                
+                                {% endfor %}
+                            </td>
+                            <td>
+                                    <form method="GET" action="{{ url_for('update_question', question_id=question.id) }}" class="d-flex flex-column align-items-center">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-warning btn-lg mb-2 w-100">Güncelle</button>
+                                    </form>
+                                    
+                                    <form method="POST" action="/delete_question/{{ question.id }}" class="d-flex flex-column align-items-center">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger btn-lg w-100">Sil</button>
+                                    </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

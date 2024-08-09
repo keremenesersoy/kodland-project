@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Exam</a>      
+        
+        {% if not session['isAdminLoggedIn'] %}  
+        
+        <div class="d-flex ms-auto">
+            <a class="btn btn-primary" href="{{ url_for('admin_login') }}">Admin Girişi</a>
+        </div>
+        
+        {% else %}
+        
+        <div class="d-flex ms-auto">
+            <a class="btn btn-primary me-3" href="{{ url_for('admin') }}">Admin Paneli</a>
+            <a class="btn btn-primary" href="{{ url_for('logout') }}">Çıkış</a>
+        </div>
+
+        {% endif %}
+
+    </div>
+</nav>

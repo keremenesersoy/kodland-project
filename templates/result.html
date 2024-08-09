@@ -1,0 +1,18 @@
+{% extends "/index.html" %}
+
+{% block content %}
+
+
+<div class="container score-container">
+    <h1 class="display-4 mb-4">Your Score: <span class="text-primary">{{ score }}</span></h1>
+    
+    {% if high_score %}
+        <h2 class="display-4 mb-4">Your High Score: <span class="text-danger">{{ high_score }}</span></h2>
+    {% endif %}
+    
+    <a href="/" class="btn btn-primary btn-custom">Try Again</a>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+
+# Environment variables and settings
+.env
+*.env
+
+# Flask specific files
+instance/
+
+# Virtual environment
+venv/
+env/
+
+# IDE and editor settings
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test coverage reports
+.coverage
+coverage.xml
+
+# Log files
+*.log
